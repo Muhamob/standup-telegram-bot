@@ -23,6 +23,7 @@ def timeit_cmd(update: Update, context: CallbackContext) -> None:
 
     TODO:
     1. Менять время стендапа
+    2. Сохранение состояние джобы
 
     :param update: Update
     :param context: Context
@@ -38,7 +39,7 @@ def timeit_cmd(update: Update, context: CallbackContext) -> None:
     # messages
     agreement_message = "Setting up a timer for " + ", ".join(
         [days_of_week_dict[i] for i in days_of_week]
-    ) + " days at " + meeting_time.strftime("%H:%M")
+    ) + " at " + meeting_time.strftime("%H:%M")
     notify_message = "Стендаааааааааап!1!1!!!!!!!1"
 
     context.bot.send_message(chat_id=chat_id, text=agreement_message)

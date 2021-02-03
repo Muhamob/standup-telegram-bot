@@ -5,10 +5,10 @@ from telegram import Message
 from telegram.ext.filters import MessageFilter
 
 
-class StandupFilter(MessageFilter):
+class StandUpFilter(MessageFilter):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.pattern = re.compile(r".*(стенд[ау]+п).*", re.DOTALL)
+        self.pattern = re.compile(r".*(ст[еэ]+нд[ау]+п).*", re.DOTALL)
 
     def filter(self, message: Message) -> Optional[Union[bool, Dict]]:
         text = message.text.lower()

@@ -1,8 +1,8 @@
-from telegram.ext import Updater, CommandHandler, RegexHandler, MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 from src.callbacks import sheldons_spot_cmd
 from src.commands import start_cmd, timeit_cmd
-from src.filters import StandupFilter
+from src.filters import StandUpFilter
 from src.ops import load_secrets
 
 if __name__ == "__main__":
@@ -22,7 +22,7 @@ if __name__ == "__main__":
     )
     updater.dispatcher.add_handler(
         MessageHandler(
-            Filters.text & ~Filters.command & ,
+            Filters.text & ~Filters.command & StandUpFilter(),
             sheldons_spot_cmd
         )
     )
