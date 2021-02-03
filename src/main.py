@@ -9,7 +9,7 @@ def start(update: Update, context: CallbackContext) -> None:
 
 
 def callback_alarm(context: CallbackContext, chat_id):
-    context.bot.send_message(chat_id=chat_id, text='Саня, иди на хй. Не стал писать полное сообщение, а то вдруг сбер всё это читает')
+    context.bot.send_message(chat_id=chat_id, text='Саня, иди на хй. Не буду править это сообщение')
 
 
 def callback_timer(update: Update, context: CallbackContext):
@@ -20,7 +20,12 @@ def callback_timer(update: Update, context: CallbackContext):
 
 
 if __name__ == "__main__":
-    updater = Updater("1616350146:AAFF8enpWcAXT4Czgyoo_tzs767sIWhKl2o")
+    import yaml
+
+    with open("../secret.yml", "r") as f:
+        secret = yaml.safe_load(f)
+
+    updater = Updater(secret['token'])
 
     updater.dispatcher.add_handler(CommandHandler('start', start, pass_args=True))
     updater.dispatcher.add_handler(CommandHandler('timeit', callback_timer))
